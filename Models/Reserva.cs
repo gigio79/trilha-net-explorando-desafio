@@ -15,46 +15,41 @@ namespace DesafioProjetoHospedagem.Models
 
         public void CadastrarHospedes(List<Pessoa> hospedes)
         {
-            // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
-            // *IMPLEMENTE AQUI*
-            if (true)
+            int capacid=Suite.Capacidade;
+            int qtd= Hospedes.Count;
+             if (capacid>=qtd)
             {
                 Hospedes = hospedes;
             }
             else
-            {
-                // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+            {   //importante ser uma excessão pro programa parar de rodar
+                throw new ArgumentException("A suite não comporta o número de hospedes!");
             }
         }
 
         public void CadastrarSuite(Suite suite)
         {
-            Suite = suite;
+            this.Suite = suite;
         }
 
         public int ObterQuantidadeHospedes()
         {
-            // TODO: Retorna a quantidade de hóspedes (propriedade Hospedes)
-            // *IMPLEMENTE AQUI*
-            return 0;
+            int quantidadeHospedes = 0;
+            quantidadeHospedes += Hospedes.Count;
+            return quantidadeHospedes;
         }
 
         public decimal CalcularValorDiaria()
         {
-            // TODO: Retorna o valor da diária
-            // Cálculo: DiasReservados X Suite.ValorDiaria
-            // *IMPLEMENTE AQUI*
-            decimal valor = 0;
-
-            // Regra: Caso os dias reservados forem maior ou igual a 10, conceder um desconto de 10%
-            // *IMPLEMENTE AQUI*
-            if (true)
+            decimal valorDiaria = 0;
+            valorDiaria = Suite.ValorDiaria * DiasReservados;
+            if (DiasReservados >= 10)
             {
-                valor = 0;
+
+                valorDiaria -= valorDiaria * 0.10M;
             }
 
-            return valor;
+            return valorDiaria;
         }
     }
 }
